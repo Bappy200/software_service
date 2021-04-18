@@ -1,0 +1,18 @@
+.text h1{
+    color:#fff;
+    font-weight: 900;
+    font-size: 42px;
+    margin-bottom: 30px;
+}
+.text h5{
+    color:#fff;
+    font-weight: 400;
+    font-size: 25px;
+}
+.header-content{
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 100px;
+}

@@ -1,0 +1,31 @@
+.features-section{
+    background: url('../../../images/success.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    
+}
+.our-featuers{
+    width: 60%;
+    margin-left: auto;
+}
+ul,li{
+    padding-left: 0px  !important;
+}
+ul li{
+    list-style: none;
+    margin-bottom: 15px;
+    color: #fff;
+}
+@media(max-width:991px){
+    .our-featuers{
+        width: 100%;
+    }
+    .features-section{
+        height: 600px;
+    }
+}
+

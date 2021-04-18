@@ -1,0 +1,88 @@
+.contact{
+    background:#111
+}
+.formBox{
+    min-width: 60%;
+}
+.formBox form{
+    display: flex;
+    flex-direction: column;
+}
+.formBox form h3,
+.contactInfo h3{
+    color:#fff;
+    font-weight:500;
+    margin-bottom: 10px;
+    font-size:20px;
+}
+.formBox form input,
+.formBox form textarea{
+    margin-bottom: 20px;
+    padding:15px;
+    background:#222;
+    color:#fff;
+    border:none;
+    outline: none;
+    resize: none;
+}
+.formBox form textarea{
+    min-height: 200px;
+}
+.formBox form input::placeholder,
+.formBox form textarea::placeholder{
+    color:#999;
+}
+.formBox form input[type="submit"]{
+    max-width: 100px;
+    background:#2196f3;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor:pointer;
+}
+.contactInfo{
+    min-width: 40%;
+}
+.box{
+    display: flex;
+    padding: 20px;
+}
+.box .icon{
+    min-width: 40px;
+    padding-top: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;  
+}
+.box .icon i{
+    filter: invert(1);
+}
+.box .text{
+    display: flex;
+    margin-left: 20px;
+    font-size: 16px;
+    flex-direction: column;
+    font-weight: 300;
+}
+.box .text h3{
+    color:#2196f3;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+.box .text p{
+    color:#fff;
+}
+.content{
+    display: flex;
+    justify-content: space-between;
+}
+@media(max-width:991px){
+    .content{
+        flex-direction: column;
+    }
+    .formBox{
+        min-width: 100%;
+    }
+    .contactInfo{
+        min-width: 100%;
+    }
+}

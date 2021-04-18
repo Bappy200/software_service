@@ -1,0 +1,22 @@
+.header-section{
+    height: 100vh;
+    width: 100%;
+    background: url('../../../images/banner-top.jpg');
+    position: relative;
+    background-position: center;
+    background-size: cover;  
+    background-attachment: fixed; 
+}
+.animation{
+    filter:hue-rotate(100deg);
+    animation: anim 10s linear infinite; 
+
+}
+@keyframes anim {
+    0%{
+        filter: hue-rotate(0deg);
+    }
+    100%{
+        filter: hue-rotate(360deg);
+    }
+}
