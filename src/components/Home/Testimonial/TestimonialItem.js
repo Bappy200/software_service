@@ -1,10 +1,10 @@
 import React from 'react'
 
-function TestimonialItem() {
+function TestimonialItem({name,description,companyName}) {
     return (
-        <div class="testimonialBox">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea architecto laboriosam laborum quae, vel dolorem ipsam, aliquid impedit sint, asperiores distinctio maxime dolorum voluptatum cumque. Nostrum a odio libero qui.</p>
-            <h3>SomeOne Famous<br/><span>Try Something New</span></h3>
+        <div className="testimonialBox">
+            <p>{description}</p>
+            <h3>{name}<br/><span>{companyName}</span></h3>
         </div>
     )
 }

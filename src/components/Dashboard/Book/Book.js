@@ -1,37 +1,50 @@
-import React, { useContext } from 'react'
-import { UserContext } from '../../../App'
+import React, { useEffect, useState } from 'react'
 import SideBar from '../SideBar/SideBar'
+import { useParams } from 'react-router';
+import { loadStripe } from '@stripe/stripe-js';
+import {  Elements } from '@stripe/react-stripe-js';
+import CheckoutForm from './CheckoutForm';
 
+const stripePromise = loadStripe('pk_test_51IeBMjHc13JdSpdQJh3hM0o3sxg6qJVs1IlKksQLg3pFRjt437ygv3FYMPg03V8lhVwE6KAFndPa8B7uJDQPdpjR00NXv4Wmgj');
 function Book() {
-    const [loginUser] = useContext(UserContext)
+    
+    
+    const [book, setBook] = useState({})
+
+   
+
+    let { id } = useParams();
+    useEffect(() => {
+        fetch(`http://localhost:5000/book/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                delete data._id
+                setBook(data)
+            })
+    }, [id])
+
+  
+
     return (
         <section>
             <div className="row">
                 <div className="col-md-3">
-                   <SideBar></SideBar>
+                    <SideBar></SideBar>
                 </div>
                 <div className="col-md-9">
                     <form>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">User Name</label>
-                            <input type="text" class="form-control"  value={loginUser.displayName} required/>
-                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <div className="mb-3">
+                            <label className="form-label">Service Name</label>
+                            <input type="text"  value={book.title}  className="form-control" required disabled />
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Email address</label>
-                            <input type="email" class="form-control" value={loginUser.email} required/>
-                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <div className="mb-3">
+                            <label className="form-label">Price</label>
+                            <input type="text"  value={book.price} className="form-control" required disabled />
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" />
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
+                    <Elements stripe={stripePromise}>
+                        <CheckoutForm book={book}></CheckoutForm>
+                    </Elements>
                 </div>
             </div>
         </section>

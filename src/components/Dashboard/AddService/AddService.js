@@ -1,41 +1,65 @@
 import React, {useState } from 'react'
 import SideBar from '../SideBar/SideBar'
-
+import axios from 'axios'
+import { useForm } from "react-hook-form";
 function AddService() {
-    const [info, setInfo] = useState({});
-    const [file, setFile] = useState(null);
 
-    const handlerBlur = e => {
-        const newInfo = { ...info };
-        newInfo[e.target.name] = e.target.value;
-        setInfo(newInfo);
+    const [imageUrl, setImageUrl] = useState(null);
+
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+    // const handlerBlur = e => {
+    //     const newInfo = { ...info };
+    //     newInfo[e.target.name] = e.target.value;
+    //     setInfo(newInfo);
+    // }
+    // console.log(info)
+
+    // const handlerChange = e => {
+    //     const newFile = e.target.files[0];
+    //     setFile(newFile);
+    // }
+    const handleImage = event =>{
+        console.log(event.target.files[0]);
+        const imageData = new FormData();
+        imageData.set('key','c6f69c82a87dbc1c22b619fef2b40b37')
+        imageData.append('image',event.target.files[0])
+
+        axios.post('https://api.imgbb.com/1/upload', imageData)
+          .then((response) => {
+            console.log('image url out : ',response.data.data.display_url)
+            setImageUrl(response.data.data['display_url']);
+            
+            console.log(response)
+            console.log(imageUrl)
+          }, (error) => {
+            console.log(error);
+          });
     }
-    console.log(info)
 
-    const handlerChange = e => {
-        const newFile = e.target.files[0];
-        setFile(newFile);
-    }
-
-    const handlerSubmit = (e) => {
-
-        const formData = new FormData()
-        formData.append('file', file);
-        formData.append('title',info.title)
-        formData.append('description',info.description)
-
-        fetch('http://localhost:5000/addService', {
-            method: 'POST',
-            body: formData
+    const onSubmit = data => {
+        const eventData = {
+          imageUrl,
+          title:data.title,
+          description:data.description,
+          price:data.price
+        }
+        console.log(data)
+        console.log(eventData)
+  
+        fetch('http://localhost:5000/addService',{
+          method:'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:JSON.stringify(eventData)
         })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-            })
-            .catch(error => {
-                console.error(error)
-            })
-    }
+        .then(res=> res.json())
+        .then(data =>{
+          if(data){
+            alert('Data inserted')
+          }
+        })
+      };
+
     return (
         <section>
             <div className="row">
@@ -43,21 +67,25 @@ function AddService() {
                    <SideBar></SideBar>
                 </div>
                 <div className="col-md-9">
-                    <form onSubmit={handlerSubmit}>
+                <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="mb-3">
-                            <label for="exampleInputEmail1" className="form-label">Service Name</label>
-                            <input type="text" name='title' onBlur={handlerBlur} className="form-control" required/>
+                            <label className="form-label">Service Name</label>
+                            <input type="text" name='title' {...register("title")}  className="form-control" required/>
                         </div>
                         <div className="mb-3">
-                            <label for="exampleInputEmail1" className="form-label">Description</label>
-                            <textarea type="text" name='description' onBlur={handlerBlur} className="form-control" required/>                       
+                            <label  className="form-label">Description</label>
+                            <textarea type="text" {...register("description")} name='description'  className="form-control" required/>                       
+                        </div>
+                        <div className="mb-3">
+                            <label  className="form-label">Price</label>
+                            <textarea type="number" {...register("price")} name='price'  className="form-control" required/>                       
                         </div>
                        
                         <div className="mb-3 form-check">
-                            <input type="file"  onChange={handlerChange} className="form-input brand-button" id="exampleCheck1" />
+                            <input type="file"  onChange={handleImage} className="form-input" />
                             
                         </div>
-                        <button type="submit" className="btn btn-primary">Submit</button>
+                        <input type="submit"/>
                     </form>
                 </div>
             </div>

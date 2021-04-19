@@ -1,16 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ServiceItem from "./ServiceItem";
 
 
 function Service() {
+    const [services,setServices] = useState([])
+    useEffect(() => {
+        fetch('http://localhost:5000/services')
+        .then(res => res.json())
+        .then(data => setServices(data))
+    }, [])
+
+    
     return (
         <section>
-            <div class="heading">
+            <div className="heading">
                 <h2>Our Service</h2>
                 <p>SBI presents a unique service package to suit your needs! </p>
             </div>
             <div className="row">
-                <ServiceItem />
+                {
+                    services.map(service => <ServiceItem key={service._id} {...service}/>)
+                }
             </div>
         </section>
     )
