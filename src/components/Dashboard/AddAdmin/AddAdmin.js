@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
 import SideBar from '../SideBar/SideBar'
 import { useForm } from "react-hook-form";
 function AddAdmin() {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         
         fetch('https://calm-basin-96440.herokuapp.com/makeAdmin',{

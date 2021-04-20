@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { UserContext } from '../../../App'
-import AddService from '../AddService/AddService'
 import SideBar from '../SideBar/SideBar'
 
 function Dashboard() {

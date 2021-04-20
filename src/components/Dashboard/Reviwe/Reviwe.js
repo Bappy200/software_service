@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 
 function Reviwe() {
     
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit } = useForm();
 
     const onSubmit = data => {
         const reviweData = {

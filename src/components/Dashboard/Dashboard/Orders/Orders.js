@@ -3,7 +3,6 @@ import SideBar from '../../SideBar/SideBar'
 
 function Orders() {
     const [orders, setOrders] = useState([])
-    const [value, setValue] = useState('');
     
     useEffect(() => {
         fetch('https://calm-basin-96440.herokuapp.com/orders')
@@ -22,26 +21,6 @@ function Orders() {
                     <SideBar></SideBar>
                 </div>
                 <div classNameNameName="col-md-9">
-                    {/* <table classNameNameName="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">EmailID</th>
-                                <th scope="col">Service</th>
-                                <th scope="col">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                orders.map(order => <tr>
-                                    <td>{order.user}</td>
-                                    <td>{order.email}</td>
-                                    <td>{order.title}</td>
-                                    <td>{order.state}</td>
-                                </tr>)
-                            }
-                        </tbody>
-                    </table> */}
                     <table className="table" style={{width:'700px',marginLeft:'300px'}}>
                         <thead className="thead-dark">
                             <tr>

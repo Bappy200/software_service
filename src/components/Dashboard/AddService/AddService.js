@@ -6,7 +6,7 @@ function AddService() {
 
     const [imageUrl, setImageUrl] = useState(null);
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit } = useForm();
 
     // const handlerBlur = e => {
     //     const newInfo = { ...info };
