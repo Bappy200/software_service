@@ -1,9 +1,11 @@
 import './App.css';
+
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
+
 import Home from './components/Home/Home/Home';
 import Login from './components/Login/Login';
 import { createContext, useState } from 'react';
@@ -15,6 +17,7 @@ import AddAdmin from './components/Dashboard/AddAdmin/AddAdmin';
 import Reviwe from './components/Dashboard/Reviwe/Reviwe';
 import Booking from './components/Dashboard/Booking/Booking';
 import Orders from './components/Dashboard/Dashboard/Orders/Orders';
+import ManageService from './components/Dashboard/ManageService/ManageService';
 
 export const UserContext = createContext();
 function App() {
@@ -46,6 +49,9 @@ function App() {
         </PrivateRoute>
         <PrivateRoute path='/orders'>
             <Orders></Orders>
+        </PrivateRoute>
+        <PrivateRoute path='/manageServices'>
+            <ManageService></ManageService>
         </PrivateRoute>
         <PrivateRoute path='/book/:id'>
             <Book></Book>

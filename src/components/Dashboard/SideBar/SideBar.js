@@ -9,13 +9,13 @@ function SideBar() {
     const [isAdmin, setisAdmin] = useState(false);
     const [loginUser] = useContext(UserContext)
     useEffect(() => {
-        fetch(`http://localhost:5000/isAdmin?email=${loginUser.email}`)
+        fetch(`https://calm-basin-96440.herokuapp.com/isAdmin?email=${loginUser.email}`)
             .then(res => res.json())
             .then(data => setisAdmin(data))
     }, [loginUser.email])
     return (
         <aside>
-            <h2 className='text-white fw-bold text-center'>SBI</h2>
+            <h2 ><Link className='text-white fw-bold text-center' to='/'>SBI</Link></h2>
             <ul className='pages'>
                 <li>
                     <Link to='/book'><FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>  Book</Link>

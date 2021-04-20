@@ -15,7 +15,7 @@ function Book() {
 
     let { id } = useParams();
     useEffect(() => {
-        fetch(`http://localhost:5000/book/${id}`)
+        fetch(`https://calm-basin-96440.herokuapp.com/book/${id}`)
             .then(res => res.json())
             .then(data => {
                 delete data._id

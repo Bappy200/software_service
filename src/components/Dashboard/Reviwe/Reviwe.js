@@ -15,7 +15,7 @@ function Reviwe() {
         console.log(data)
         console.log(reviweData)
   
-        fetch('http://localhost:5000/reviwe',{
+        fetch('https://calm-basin-96440.herokuapp.com/reviwe',{
           method:'POST',
           headers: { 'Content-Type': 'application/json' },
           body:JSON.stringify(reviweData)

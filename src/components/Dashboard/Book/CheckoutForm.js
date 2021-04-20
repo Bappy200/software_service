@@ -37,7 +37,7 @@ const CheckoutForm = ({book}) => {
       book.state = 'Recive'
       console.log('[PaymentMethod]', paymentMethod);
 
-      fetch('http://localhost:5000/booking',{
+      fetch('https://calm-basin-96440.herokuapp.com/booking',{
           method:'POST',
           headers: { 'Content-Type': 'application/json' },
           body:JSON.stringify(book)

@@ -47,7 +47,7 @@ function AddService() {
         console.log(data)
         console.log(eventData)
   
-        fetch('http://localhost:5000/addService',{
+        fetch('https://calm-basin-96440.herokuapp.com/addService',{
           method:'POST',
           headers: { 'Content-Type': 'application/json' },
           body:JSON.stringify(eventData)
