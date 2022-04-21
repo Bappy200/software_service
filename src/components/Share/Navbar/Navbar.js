@@ -1,17 +1,18 @@
 import React, { useContext } from 'react'
 import {Link} from 'react-router-dom'
 import { UserContext } from '../../../App'
+import "./Navbar.css"
 
 function Navbar() {
     const [loginUser,setLoginUser] = useContext(UserContext);
     console.log(loginUser)
     return (
 
-            <nav className="navbar navbar-expand-lg navbar-light navClass" style={{background:'rgba(56, 54, 54, 0.138)',boxShadow:' rgb(255 255 255 / 56%) 2px 1px 7px 0px',padding:'5px 100px'}}>
+            <nav className="navbar navbar-expand-lg navClass">
                 <div className="container-fluid">
                     <Link className="navbar-brand text-white fw-bold" to="/">SBI</Link>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
+                    <button className="navbar-toggler navIcon" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon "></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">

@@ -1,11 +1,15 @@
 .navClass{
-    background: rgba(216, 216, 216, 0.781);
+    background: rgb(255 255 255 / 51%) !important;
     box-shadow: rgb(255 255 255 / 56%) 2px 1px 7px 0px;
     padding: 5px 100px;
+}
+.navIcon{
+    color: #000 !important;
+    background: #000;
 }
 
 @media (max-width: 576px) {
     .navClass{
-        padding: 5px 50px;
+        padding: 5px 50px !important;
     }
  }
