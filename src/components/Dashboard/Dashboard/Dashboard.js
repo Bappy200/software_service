@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { UserContext } from '../../../App'
 import SideBar from '../SideBar/SideBar'
+import welcomeImage from "../../../images/welcomeImage.jpg"
 
 function Dashboard() {
     const[loginUser] = useContext(UserContext)
@@ -11,7 +12,10 @@ function Dashboard() {
                     <SideBar></SideBar>
                 </div>
                 <div className="col-md-9">
-                    <h2>Welcome "{loginUser.displayName}"</h2>
+                <h2 style={{textAlign:'center', textTransform:'uppercase'}}>Welcome {loginUser.displayName}</h2>
+                    <div style={{textAlign:'center'}}>
+                        <img  src={welcomeImage} alt="welcome_image"/>
+                    </div>
                 </div>
             </div>
         </section>
